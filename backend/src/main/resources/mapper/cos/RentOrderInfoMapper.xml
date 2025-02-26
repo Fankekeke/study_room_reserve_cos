@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cc.mrbird.febs.cos.dao.RentOrderInfoMapper">
+
+    <!-- 分页获取租借订单 -->
+    <select id="queryRentOrderPage" resultType="java.util.LinkedHashMap">
+        select roi.id,
+        roi.code,
+        roi.user_id,
+        roi.device_id,
+        roi.start_date,
+        roi.end_date,
+        roi.rent_hour,
+        roi.unit_price,
+        roi.deposit_price,
+        roi.total_price,
+        roi.status,
+        roi.return_date,
+        roi.create_date,
+        ui.name as userName,
+        ui.images as userImages,
+        ui.phone,
+        di.name,
+        di.content,
+        di.model,
+        di.brand,
+        dti.name as typeName,
+        dti.images as typeImages,
+        evi.id as evaluateFlag
+        from rent_order_info roi
+        left join user_info ui on
+        (ui.id = roi.user_id)
+        left join device_info di on
+        (di.id = roi.device_id)
+        left join device_type_info dti on
+        (dti.id = di.type_id)
+        left join evaluate_info evi on
+        (evi.order_code = roi.code)
+        where 1 = 1
+        <if test="rentOrderInfo.code != null and rentOrderInfo.code != ''">
+            AND roi.code LIKE CONCAT('%',#{rentOrderInfo.code},'%')
+        </if>
+        <if test="rentOrderInfo.userName != null and rentOrderInfo.userName != ''">
+            AND ui.name LIKE CONCAT('%',#{rentOrderInfo.userName},'%')
+        </if>
+        <if test="rentOrderInfo.name != null and rentOrderInfo.name != ''">
+            AND di.name LIKE CONCAT('%',#{rentOrderInfo.name},'%')
+        </if>
+        <if test="rentOrderInfo.typeName != null and rentOrderInfo.typeName != ''">
+            AND dti.name LIKE CONCAT('%',#{rentOrderInfo.typeName},'%')
+        </if>
+        <if test="rentOrderInfo.userId != null and rentOrderInfo.userId != ''">
+            AND ui.`user_id` = #{rentOrderInfo.userId}
+        </if>
+        order by roi.create_date desc
+    </select>
+
+    <!-- 近十天内订单数量统计 -->
+    <select id="selectOrderNumDays" resultType="java.util.LinkedHashMap">
+        SELECT
+        DATE_FORMAT( spo.days, '%m-%d' ) AS days,
+        IFNULL(COUNT(oi.id), 0) AS count
+        FROM
+        (
+        SELECT
+        DATE_SUB( curdate(), INTERVAL + 0 DAY ) days UNION
+        SELECT
+        DATE_SUB( curdate(), INTERVAL + 1 DAY ) UNION
+        SELECT
+        DATE_SUB( curdate(), INTERVAL + 2 DAY ) UNION
+        SELECT
+        DATE_SUB( curdate(), INTERVAL + 3 DAY ) UNION
+        SELECT
+        DATE_SUB( curdate(), INTERVAL + 4 DAY ) UNION
+        SELECT
+        DATE_SUB( curdate(), INTERVAL + 5 DAY ) UNION
+        SELECT
+        DATE_SUB( curdate(), INTERVAL + 6 DAY ) UNION
+        SELECT
+        DATE_SUB( curdate(), INTERVAL + 7 DAY ) UNION
+        SELECT
+        DATE_SUB( curdate(), INTERVAL + 8 DAY ) UNION
+        SELECT
+        DATE_SUB( curdate(), INTERVAL + 9 DAY )) spo
+        LEFT JOIN rent_order_info oi ON (
+        DATE_FORMAT( oi.create_date, '%Y-%m-%d' ) = DATE_FORMAT( spo.days, '%Y-%m-%d' )
+        )
+        WHERE 1 = 1
+        GROUP BY
+        days
+        ORDER BY
+        days ASC
+    </select>
+
+    <!-- 近十天内订单收益统计 -->
+    <select id="selectOrderAmountDays" resultType="java.util.LinkedHashMap">
+        SELECT
+        DATE_FORMAT( spo.days, '%m-%d' ) AS days,
+        IFNULL(SUM(oi.total_price), 0) AS price
+        FROM
+        (
+        SELECT
+        DATE_SUB( curdate(), INTERVAL + 0 DAY ) days UNION
+        SELECT
+        DATE_SUB( curdate(), INTERVAL + 1 DAY ) UNION
+        SELECT
+        DATE_SUB( curdate(), INTERVAL + 2 DAY ) UNION
+        SELECT
+        DATE_SUB( curdate(), INTERVAL + 3 DAY ) UNION
+        SELECT
+        DATE_SUB( curdate(), INTERVAL + 4 DAY ) UNION
+        SELECT
+        DATE_SUB( curdate(), INTERVAL + 5 DAY ) UNION
+        SELECT
+        DATE_SUB( curdate(), INTERVAL + 6 DAY ) UNION
+        SELECT
+        DATE_SUB( curdate(), INTERVAL + 7 DAY ) UNION
+        SELECT
+        DATE_SUB( curdate(), INTERVAL + 8 DAY ) UNION
+        SELECT
+        DATE_SUB( curdate(), INTERVAL + 9 DAY )) spo
+        LEFT JOIN rent_order_info oi ON (
+        DATE_FORMAT( oi.create_date, '%Y-%m-%d' ) = DATE_FORMAT( spo.days, '%Y-%m-%d' ) AND oi.status != 0
+        )
+        WHERE 1 = 1
+        GROUP BY
+        days
+        ORDER BY
+        days ASC
+    </select>
+
+    <!-- 本月订单信息 -->
+    <select id="selectOrderInfoByMonth" resultType="cc.mrbird.febs.cos.entity.RentOrderInfo">
+        select
+        oi.*
+        from
+        rent_order_info oi
+        where
+        1 = 1
+        and DATE_FORMAT( oi.create_date, '%Y-%m' ) = DATE_FORMAT( CURDATE(), '%Y-%m' )
+    </select>
+
+    <!-- 本年订单信息 -->
+    <select id="selectOrderInfoByYear" resultType="cc.mrbird.febs.cos.entity.RentOrderInfo">
+        select
+        oi.*
+        from
+        rent_order_info oi
+        where
+        1 = 1
+        and DATE_FORMAT( oi.create_date, '%Y' ) = DATE_FORMAT( CURDATE(), '%Y' )
+    </select>
+</mapper>

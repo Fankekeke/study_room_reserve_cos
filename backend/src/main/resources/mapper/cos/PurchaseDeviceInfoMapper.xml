@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cc.mrbird.febs.cos.dao.PurchaseDeviceInfoMapper">
+
+    <!-- 分页获取自习室采购记录 -->
+    <select id="queryPurchaseDevicePage" resultType="java.util.LinkedHashMap">
+        select pdi.id,
+        pdi.code,
+        pdi.charge_person,
+        pdi.supplier_id,
+        pdi.content,
+        pdi.total_price,
+        pdi.create_date,
+        ei.name as supplierName,
+        ei.corporate_representative_phone as supplierPhone,
+        si.name as staffName,
+        si.images as staffImages,
+        si.phone as staffPhone
+        from purchase_device_info pdi
+        left join enterprise_info ei on
+        (ei.id = pdi.supplier_id)
+        left join staff_info si on (si.id = pdi.charge_person)
+        where 1 = 1
+        <if test="purchaseDeviceInfo.code != null and purchaseDeviceInfo.code != ''">
+            AND pdi.code LIKE CONCAT('%',#{purchaseDeviceInfo.code},'%')
+        </if>
+        <if test="purchaseDeviceInfo.staffName != null and purchaseDeviceInfo.staffName != ''">
+            AND si.name LIKE CONCAT('%',#{purchaseDeviceInfo.chargePerson},'%')
+        </if>
+        <if test="purchaseDeviceInfo.supplierName != null and purchaseDeviceInfo.supplierName != ''">
+            AND ei.name LIKE CONCAT('%',#{purchaseDeviceInfo.supplierName},'%')
+        </if>
+        order by pdi.create_date desc
+    </select>
+</mapper>
