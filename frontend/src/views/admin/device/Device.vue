@@ -7,7 +7,7 @@
           <div :class="advanced ? null: 'fold'">
             <a-col :md="6" :sm="24">
               <a-form-item
-                label="器材型号"
+                label="房间型号"
                 :labelCol="{span: 5}"
                 :wrapperCol="{span: 18, offset: 1}">
                 <a-input v-model="queryParams.model"/>
@@ -15,7 +15,7 @@
             </a-col>
             <a-col :md="6" :sm="24">
               <a-form-item
-                label="器材名称"
+                label="房间名称"
                 :labelCol="{span: 5}"
                 :wrapperCol="{span: 18, offset: 1}">
                 <a-input v-model="queryParams.name"/>
@@ -23,7 +23,7 @@
             </a-col>
             <a-col :md="6" :sm="24">
               <a-form-item
-                label="器材类型"
+                label="房间类型"
                 :labelCol="{span: 5}"
                 :wrapperCol="{span: 18, offset: 1}">
                 <a-input v-model="queryParams.typeName"/>
@@ -147,10 +147,10 @@ export default {
     }),
     columns () {
       return [{
-        title: '器材编号',
+        title: '房间编号',
         scopedSlots: {customRender: 'numShow'}
       }, {
-        title: '器械类型',
+        title: '房间类型',
         dataIndex: 'typeName',
         customRender: (text, row, index) => {
           if (text !== null) {
@@ -160,7 +160,7 @@ export default {
           }
         }
       }, {
-        title: '器材名称',
+        title: '房间名称',
         dataIndex: 'name',
         customRender: (text, row, index) => {
           if (text !== null) {
@@ -180,7 +180,7 @@ export default {
           }
         }
       }, {
-        title: '供应商',
+        title: '装修公司',
         dataIndex: 'supplierName',
         customRender: (text, row, index) => {
           if (text !== null) {
@@ -220,7 +220,7 @@ export default {
           }
         }
       }, {
-        title: '器材图片',
+        title: '房间图片',
         dataIndex: 'typeImages',
         customRender: (text, record, index) => {
           if (!record.typeImages) return <a-avatar shape="square" icon="user" />
@@ -287,7 +287,7 @@ export default {
     },
     handlespaceAddSuccess () {
       this.spaceAdd.visiable = false
-      this.$message.success('新增器材成功')
+      this.$message.success('新增房间成功')
       this.search()
     },
     edit (record) {
@@ -299,7 +299,7 @@ export default {
     },
     handlespaceEditSuccess () {
       this.spaceEdit.visiable = false
-      this.$message.success('修改器材成功')
+      this.$message.success('修改房间成功')
       this.search()
     },
     handleDeptChange (value) {

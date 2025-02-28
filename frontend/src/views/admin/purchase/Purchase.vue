@@ -7,7 +7,7 @@
           <div :class="advanced ? null: 'fold'">
             <a-col :md="6" :sm="24">
               <a-form-item
-                label="采购单号"
+                label="装修单号"
                 :labelCol="{span: 5}"
                 :wrapperCol="{span: 18, offset: 1}">
                 <a-input v-model="queryParams.code"/>
@@ -15,7 +15,7 @@
             </a-col>
             <a-col :md="6" :sm="24">
               <a-form-item
-                label="采购人"
+                label="负责人"
                 :labelCol="{span: 5}"
                 :wrapperCol="{span: 18, offset: 1}">
                 <a-input v-model="queryParams.staffName"/>
@@ -23,7 +23,7 @@
             </a-col>
             <a-col :md="6" :sm="24">
               <a-form-item
-                label="供应商"
+                label="装修公司"
                 :labelCol="{span: 5}"
                 :wrapperCol="{span: 18, offset: 1}">
                 <a-input v-model="queryParams.supplierName"/>
@@ -130,10 +130,10 @@ export default {
     }),
     columns () {
       return [{
-        title: '采购单号',
+        title: '装修单号',
         dataIndex: 'code'
       }, {
-        title: '采购人',
+        title: '负责人',
         dataIndex: 'staffName'
       }, {
         title: '员工照片',
@@ -151,7 +151,7 @@ export default {
         title: '备注',
         dataIndex: 'content'
       }, {
-        title: '采购价格',
+        title: '装修价格',
         dataIndex: 'totalPrice',
         customRender: (text, row, index) => {
           if (text !== null) {
@@ -161,7 +161,7 @@ export default {
           }
         }
       }, {
-        title: '供应商',
+        title: '装修公司',
         dataIndex: 'supplierName',
         customRender: (text, row, index) => {
           if (text !== null) {
@@ -171,7 +171,7 @@ export default {
           }
         }
       }, {
-        title: '供应商联系方式',
+        title: '装修公司联系方式',
         dataIndex: 'supplierPhone',
         customRender: (text, row, index) => {
           if (text !== null) {
@@ -181,7 +181,7 @@ export default {
           }
         }
       }, {
-        title: '采购时间',
+        title: '装修时间',
         dataIndex: 'createDate',
         customRender: (text, row, index) => {
           if (text !== null) {
@@ -210,7 +210,7 @@ export default {
     },
     handleRurchaseAddSuccess () {
       this.rurchaseAdd.visiable = false
-      this.$message.success('新增采购申请成功')
+      this.$message.success('新增装修申请成功')
       this.search()
     },
     edit (record) {
@@ -222,7 +222,7 @@ export default {
     },
     handleRurchaseEditSuccess () {
       this.rurchaseEdit.visiable = false
-      this.$message.success('修改采购申请成功')
+      this.$message.success('修改装修申请成功')
       this.search()
     },
     view (row) {

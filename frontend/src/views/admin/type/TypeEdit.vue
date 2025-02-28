@@ -1,5 +1,5 @@
 <template>
-  <a-modal v-model="show" title="修改器材类型" @cancel="onClose" :width="600">
+  <a-modal v-model="show" title="修改房间类型" @cancel="onClose" :width="600">
     <template slot="footer">
       <a-button key="back" @click="onClose">
         取消

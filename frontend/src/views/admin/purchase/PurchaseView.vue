@@ -1,5 +1,5 @@
 <template>
-  <a-modal v-model="show" title="采购信息" @cancel="onClose" :width="800">
+  <a-modal v-model="show" title="装修信息" @cancel="onClose" :width="800">
     <template slot="footer">
       <a-button key="back" @click="onClose" type="danger">
         关闭
@@ -8,13 +8,13 @@
     <div style="font-size: 13px" v-if="rurchaseData !== null">
       <a-row style="padding-left: 24px;padding-right: 24px;">
         <a-col style="margin-bottom: 15px"><span style="font-size: 15px;font-weight: 650;color: #000c17">基础信息</span></a-col>
-        <a-col :span="8"><b>采购单号：</b>
+        <a-col :span="8"><b>装修单号：</b>
           {{ rurchaseData.code }}
         </a-col>
         <a-col :span="8"><b>预计价格：</b>
           {{ rurchaseData.totalPrice }} 元
         </a-col>
-        <a-col :span="8"><b>采购人：</b>
+        <a-col :span="8"><b>负责人：</b>
           {{ rurchaseData.staffName }}
         </a-col>
       </a-row>
@@ -23,7 +23,7 @@
         <a-col :span="16"><b>备注信息：</b>
           {{ rurchaseData.content }}
         </a-col>
-        <a-col :span="8"><b>采购时间：</b>
+        <a-col :span="8"><b>装修时间：</b>
           {{ rurchaseData.createDate }}
         </a-col>
       </a-row>
@@ -64,7 +64,7 @@ export default {
     },
     columns () {
       return [{
-        title: '器械名称',
+        title: '房间名称',
         dataIndex: 'name'
       }, {
         title: '型号',

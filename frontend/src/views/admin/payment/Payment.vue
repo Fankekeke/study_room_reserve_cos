@@ -23,7 +23,7 @@
             </a-col>
             <a-col :md="6" :sm="24">
               <a-form-item
-                label="器械类型"
+                label="房间类型"
                 :labelCol="{span: 5}"
                 :wrapperCol="{span: 18, offset: 1}">
                 <a-input v-model="queryParams.typeName"/>
@@ -172,7 +172,7 @@ export default {
           }
         }
       }, {
-        title: '器材名称',
+        title: '房间名称',
         dataIndex: 'name',
         customRender: (text, row, index) => {
           if (text !== null) {
@@ -182,7 +182,7 @@ export default {
           }
         }
       }, {
-        title: '器材类型',
+        title: '房间类型',
         dataIndex: 'typeName',
         customRender: (text, row, index) => {
           if (text !== null) {

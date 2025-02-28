@@ -1,5 +1,5 @@
 <template>
-  <a-modal v-model="show" title="供应商详情" @cancel="onClose" :width="800">
+  <a-modal v-model="show" title="装修公司详情" @cancel="onClose" :width="800">
     <template slot="footer">
       <a-button key="back" @click="onClose" type="danger">
         关闭
@@ -7,8 +7,8 @@
     </template>
     <div style="font-size: 13px;font-family: SimHei" v-if="enterpriseData !== null">
       <a-row style="padding-left: 24px;padding-right: 24px;">
-        <a-col style="margin-bottom: 15px"><span style="font-size: 15px;font-weight: 650;color: #000c17">供应商信息</span></a-col>
-        <a-col :span="8"><b>供应商名称：</b>
+        <a-col style="margin-bottom: 15px"><span style="font-size: 15px;font-weight: 650;color: #000c17">装修公司信息</span></a-col>
+        <a-col :span="8"><b>装修公司名称：</b>
           {{ enterpriseData.name }}
         </a-col>
         <a-col :span="8"><b>单位简称或代号：</b>
@@ -23,7 +23,7 @@
         <a-col :span="8"><b>单位性质：</b>
           {{ enterpriseData.nature }}
         </a-col>
-        <a-col :span="8"><b>二级供应商单位性质：</b>
+        <a-col :span="8"><b>二级装修公司单位性质：</b>
           {{ enterpriseData.natureTwo }}
         </a-col>
         <a-col :span="8"><b>经营状态：</b>
@@ -72,7 +72,7 @@
       </a-row>
       <br/>
       <a-row style="padding-left: 24px;padding-right: 24px;">
-        <a-col :span="8"><b>英文供应商名称：</b>
+        <a-col :span="8"><b>英文装修公司名称：</b>
           {{ enterpriseData.enName }}
         </a-col>
         <a-col :span="8"><b>所属行业：</b>
@@ -105,7 +105,7 @@
       </a-row>
       <br/>
       <a-row style="padding-left: 24px;padding-right: 24px;">
-        <a-col style="margin-bottom: 15px"><span style="font-size: 15px;font-weight: 650;color: #000c17">供应商图片</span></a-col>
+        <a-col style="margin-bottom: 15px"><span style="font-size: 15px;font-weight: 650;color: #000c17">装修公司图片</span></a-col>
         <a-col :span="24">
           <a-upload
             name="avatar"

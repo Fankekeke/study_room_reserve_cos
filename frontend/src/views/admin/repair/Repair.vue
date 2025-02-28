@@ -138,7 +138,7 @@ export default {
     }),
     columns () {
       return [{
-        title: '器材编号',
+        title: '房间编号',
         dataIndex: 'code'
       }, {
         title: '维修主题',
@@ -250,7 +250,7 @@ export default {
     },
     handlespaceAddSuccess () {
       this.spaceAdd.visiable = false
-      this.$message.success('新增器材成功')
+      this.$message.success('新增房间成功')
       this.search()
     },
     edit (record) {
@@ -258,7 +258,7 @@ export default {
       // this.spaceEdit.visiable = true
 
       this.$get('/cos/repair-record-info/updateRepairStatus', {id: record.id}).then((r) => {
-        this.$message.success('器材维修完成')
+        this.$message.success('房间维修完成')
         this.search()
       })
     },
@@ -267,7 +267,7 @@ export default {
     },
     handlespaceEditSuccess () {
       this.spaceEdit.visiable = false
-      this.$message.success('修改器材成功')
+      this.$message.success('修改房间成功')
       this.search()
     },
     handleDeptChange (value) {

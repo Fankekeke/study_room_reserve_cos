@@ -31,11 +31,11 @@
       </a-row>
       <br/>
       <a-row style="padding-left: 24px;padding-right: 24px;">
-        <a-col style="margin-bottom: 15px"><span style="font-size: 15px;font-weight: 650;color: #000c17">器材信息</span></a-col>
-        <a-col :span="8"><b>器材编号：</b>
+        <a-col style="margin-bottom: 15px"><span style="font-size: 15px;font-weight: 650;color: #000c17">房间信息</span></a-col>
+        <a-col :span="8"><b>房间编号：</b>
           {{ deviceInfo.code ? deviceInfo.code : '- -' }}
         </a-col>
-        <a-col :span="8"><b>器材名称：</b>
+        <a-col :span="8"><b>房间名称：</b>
           {{ deviceInfo.name ? deviceInfo.name : '- -' }}
         </a-col>
         <a-col :span="8"><b>型号：</b>
@@ -53,7 +53,7 @@
       </a-row>
       <br/>
       <a-row style="padding-left: 24px;padding-right: 24px;">
-        <a-col style="margin-bottom: 15px"><span style="font-size: 15px;font-weight: 650;color: #000c17">器材图片</span></a-col>
+        <a-col style="margin-bottom: 15px"><span style="font-size: 15px;font-weight: 650;color: #000c17">房间图片</span></a-col>
         <a-col :span="24">
           <a-upload
             name="avatar"

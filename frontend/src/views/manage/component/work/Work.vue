@@ -98,7 +98,7 @@
         </a-col>
       </a-row>
       <a-modal
-        title="选择租借器械"
+        title="选择租借房间"
         :visible="visible"
         @ok="reserveSpace"
         @cancel="handleCancel"

@@ -1,5 +1,5 @@
 <template>
-  <a-modal v-model="show" title="修改供应商" @cancel="onClose" :width="800">
+  <a-modal v-model="show" title="修改装修公司" @cancel="onClose" :width="800">
     <template slot="footer">
       <a-button key="back" @click="onClose">
         取消
@@ -11,7 +11,7 @@
     <a-form :form="form" layout="vertical">
       <a-row :gutter="20">
         <a-col :span="8">
-          <a-form-item label='功能供应商名称' v-bind="formItemLayout">
+          <a-form-item label='功能装修公司名称' v-bind="formItemLayout">
             <a-input v-decorator="[
             'name',
             { rules: [{ required: true, message: '请输入名称!' }] }
@@ -41,7 +41,7 @@
           </a-form-item>
         </a-col>
         <a-col :span="8">
-          <a-form-item label='二级供应商单位性质' v-bind="formItemLayout">
+          <a-form-item label='二级装修公司单位性质' v-bind="formItemLayout">
             <a-input v-decorator="[
             'natureTwo'
             ]"/>
@@ -146,7 +146,7 @@
           </a-form-item>
         </a-col>
         <a-col :span="8">
-          <a-form-item label='英文供应商名称' v-bind="formItemLayout">
+          <a-form-item label='英文装修公司名称' v-bind="formItemLayout">
             <a-input v-decorator="[
             'enName'
             ]"/>
@@ -167,7 +167,7 @@
           </a-form-item>
         </a-col>
         <a-col :span="24">
-          <a-form-item label='供应商照片' v-bind="formItemLayout">
+          <a-form-item label='装修公司照片' v-bind="formItemLayout">
             <a-upload
               name="avatar"
               action="http://127.0.0.1:9527/file/fileUpload/"

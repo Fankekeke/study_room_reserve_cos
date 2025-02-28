@@ -7,7 +7,7 @@
           <div :class="advanced ? null: 'fold'">
             <a-col :md="6" :sm="24">
               <a-form-item
-                label="供应商名称"
+                label="装修公司名称"
                 :labelCol="{span: 5}"
                 :wrapperCol="{span: 18, offset: 1}">
                 <a-input v-model="queryParams.name"/>
@@ -137,7 +137,7 @@ export default {
     }),
     columns () {
       return [{
-        title: '供应商名称',
+        title: '装修公司名称',
         dataIndex: 'name'
       }, {
         title: '单位简称',

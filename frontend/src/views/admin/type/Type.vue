@@ -129,7 +129,7 @@ export default {
     }),
     columns () {
       return [{
-        title: '器械编号',
+        title: '房间编号',
         dataIndex: 'code'
       },{
         title: '类型名称',
@@ -191,7 +191,7 @@ export default {
     },
     handleConsumableAddSuccess () {
       this.consumableAdd.visiable = false
-      this.$message.success('新增器材类型成功')
+      this.$message.success('新增房间类型成功')
       this.search()
     },
     edit (record) {
@@ -203,7 +203,7 @@ export default {
     },
     handleConsumableEditSuccess () {
       this.consumableEdit.visiable = false
-      this.$message.success('修改器材类型成功')
+      this.$message.success('修改房间类型成功')
       this.search()
     },
     handleDeptChange (value) {

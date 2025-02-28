@@ -1,5 +1,5 @@
 <template>
-  <a-modal v-model="show" title="修改器材" @cancel="onClose" :width="800">
+  <a-modal v-model="show" title="修改房间" @cancel="onClose" :width="800">
     <template slot="footer">
       <a-button key="back" @click="onClose">
         取消
@@ -11,18 +11,18 @@
     <a-form :form="form" layout="vertical">
       <a-row :gutter="20">
         <a-col :span="12">
-          <a-form-item label='器材名称' v-bind="formItemLayout">
+          <a-form-item label='房间名称' v-bind="formItemLayout">
             <a-input v-decorator="[
             'name',
-            { spaces: [{ required: true, message: '请输入器材名称!' }] }
+            { spaces: [{ required: true, message: '请输入房间名称!' }] }
             ]"/>
           </a-form-item>
         </a-col>
         <a-col :span="12">
-          <a-form-item label='器材类型' v-bind="formItemLayout">
+          <a-form-item label='房间类型' v-bind="formItemLayout">
             <a-select v-decorator="[
             'typeId',
-            { spaces: [{ required: true, message: '请输入器材类型!' }] }
+            { spaces: [{ required: true, message: '请输入房间类型!' }] }
             ]" style="width: 100%">
               <a-select-option v-for="(item, index) in consumableType" :value="item.id" :key="index">{{ item.name }}</a-select-option>
             </a-select>
@@ -61,10 +61,10 @@
           </a-form-item>
         </a-col>
         <a-col :span="24">
-          <a-form-item label='器械备注' v-bind="formItemLayout">
+          <a-form-item label='房间备注' v-bind="formItemLayout">
             <a-textarea :rows="6" v-decorator="[
             'content',
-             { spaces: [{ required: true, message: '请输入器械备注!' }] }
+             { spaces: [{ required: true, message: '请输入房间备注!' }] }
             ]"/>
           </a-form-item>
         </a-col>

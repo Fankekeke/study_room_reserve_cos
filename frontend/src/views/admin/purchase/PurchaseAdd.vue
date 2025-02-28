@@ -1,6 +1,6 @@
 <template>
   <a-drawer
-    title="采购入库"
+    title="房间装修记录"
     :maskClosable="false"
     placement="left"
     :closable="false"
@@ -12,20 +12,20 @@
     <a-form :form="form" layout="vertical">
       <a-row :gutter="20">
         <a-col :span="12">
-          <a-form-item label='采购人' v-bind="formItemLayout">
+          <a-form-item label='负责人' v-bind="formItemLayout">
             <a-select v-decorator="[
               'chargePerson',
-              { rules: [{ required: true, message: '请输入采购人!' }] }
+              { rules: [{ required: true, message: '请输入负责人!' }] }
               ]">
               <a-select-option :value="item.id" v-for="(item, index) in staffList" :key="index">{{ item.name }}</a-select-option>
             </a-select>
           </a-form-item>
         </a-col>
         <a-col :span="12">
-          <a-form-item label='选择供应商' v-bind="formItemLayout">
+          <a-form-item label='选择装修公司' v-bind="formItemLayout">
             <a-select v-decorator="[
               'supplierId',
-              { rules: [{ required: true, message: '请输入供应商!' }] }
+              { rules: [{ required: true, message: '请输入装修公司!' }] }
               ]">
               <a-select-option :value="item.id" v-for="(item, index) in supplierList" :key="index">{{ item.name }}</a-select-option>
             </a-select>
@@ -63,7 +63,7 @@
             </template>
           </a-table>
           <a-button @click="dataAdd" type="primary" ghost size="large" style="margin-top: 10px;width: 100%">
-            新增器械
+            新增房间
           </a-button>
         </a-col>
       </a-row>
@@ -106,7 +106,7 @@ export default {
     },
     columns () {
       return [{
-        title: '器械名称',
+        title: '房间名称',
         dataIndex: 'name',
         scopedSlots: {customRender: 'nameShow'}
       }, {
