@@ -7,7 +7,7 @@
           <div :class="advanced ? null: 'fold'">
             <a-col :md="6" :sm="24">
               <a-form-item
-                label="维修单号"
+                label="保洁单号"
                 :labelCol="{span: 5}"
                 :wrapperCol="{span: 18, offset: 1}">
                 <a-input v-model="queryParams.code"/>
@@ -15,7 +15,7 @@
             </a-col>
             <a-col :md="6" :sm="24">
               <a-form-item
-                label="维修标题"
+                label="保洁标题"
                 :labelCol="{span: 5}"
                 :wrapperCol="{span: 18, offset: 1}">
                 <a-input v-model="queryParams.title"/>
@@ -23,7 +23,7 @@
             </a-col>
             <a-col :md="6" :sm="24">
               <a-form-item
-                label="维修人员"
+                label="保洁人员"
                 :labelCol="{span: 5}"
                 :wrapperCol="{span: 18, offset: 1}">
                 <a-input v-model="queryParams.staffName"/>
@@ -141,7 +141,7 @@ export default {
         title: '房间编号',
         dataIndex: 'code'
       }, {
-        title: '维修主题',
+        title: '保洁主题',
         dataIndex: 'title',
         customRender: (text, row, index) => {
           if (text !== null) {
@@ -151,7 +151,7 @@ export default {
           }
         }
       }, {
-        title: '维修内容',
+        title: '保洁内容',
         dataIndex: 'content',
         customRender: (text, row, index) => {
           if (text !== null) {
@@ -161,7 +161,7 @@ export default {
           }
         }
       }, {
-        title: '开始维修时间',
+        title: '开始保洁时间',
         dataIndex: 'repairStartDate',
         customRender: (text, row, index) => {
           if (text !== null) {
@@ -171,7 +171,7 @@ export default {
           }
         }
       }, {
-        title: '维修结束时间',
+        title: '保洁结束时间',
         dataIndex: 'repairEndDate',
         customRender: (text, row, index) => {
           if (text !== null) {
@@ -181,7 +181,7 @@ export default {
           }
         }
       }, {
-        title: '维修人员',
+        title: '保洁人员',
         dataIndex: 'staffName',
         customRender: (text, row, index) => {
           if (text !== null) {
@@ -191,7 +191,7 @@ export default {
           }
         }
       }, {
-        title: '维修人图片',
+        title: '保洁人图片',
         dataIndex: 'staffImages',
         customRender: (text, record, index) => {
           if (!record.staffImages) return <a-avatar shape="square" icon="user" />
@@ -258,7 +258,7 @@ export default {
       // this.spaceEdit.visiable = true
 
       this.$get('/cos/repair-record-info/updateRepairStatus', {id: record.id}).then((r) => {
-        this.$message.success('房间维修完成')
+        this.$message.success('房间保洁完成')
         this.search()
       })
     },

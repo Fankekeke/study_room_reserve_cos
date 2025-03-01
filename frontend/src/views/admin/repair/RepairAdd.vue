@@ -1,5 +1,5 @@
 <template>
-  <a-modal v-model="show" title="新增房间维修" @cancel="onClose" :width="800">
+  <a-modal v-model="show" title="新增房间保洁" @cancel="onClose" :width="800">
     <template slot="footer">
       <a-button key="back" @click="onClose">
         取消
@@ -21,46 +21,46 @@
           </a-form-item>
         </a-col>
         <a-col :span="12">
-          <a-form-item label='维修人员' v-bind="formItemLayout">
+          <a-form-item label='保洁人员' v-bind="formItemLayout">
             <a-select v-decorator="[
               'staffId',
-              { rules: [{ required: true, message: '请选择维修人员!' }] }
+              { rules: [{ required: true, message: '请选择保洁人员!' }] }
               ]">
               <a-select-option :value="item.id" v-for="(item, index) in staffList" :key="index">{{ item.name }}</a-select-option>
             </a-select>
           </a-form-item>
         </a-col>
         <a-col :span="12">
-          <a-form-item label='维修主题' v-bind="formItemLayout">
+          <a-form-item label='保洁主题' v-bind="formItemLayout">
             <a-input v-decorator="[
             'title',
-            { spaces: [{ required: true, message: '请输入维修主题!' }] }
+            { spaces: [{ required: true, message: '请输入保洁主题!' }] }
             ]"/>
           </a-form-item>
         </a-col>
         <a-col :span="12">
-          <a-form-item label='开始维修时间' v-bind="formItemLayout">
+          <a-form-item label='开始保洁时间' v-bind="formItemLayout">
             <a-date-picker show-time
                            format="YYYY-MM-DD HH:mm:ss" style="width: 100%" v-decorator="[
             'repairStartDate',
-            { rules: [{ required: true, message: '请输入开始维修时间!' }] }
+            { rules: [{ required: true, message: '请输入开始保洁时间!' }] }
             ]"/>
           </a-form-item>
         </a-col>
         <a-col :span="12">
-          <a-form-item label='维修结束时间' v-bind="formItemLayout">
+          <a-form-item label='保洁结束时间' v-bind="formItemLayout">
             <a-date-picker show-time
                            format="YYYY-MM-DD HH:mm:ss" style="width: 100%" v-decorator="[
             'repairEndDate',
-            { rules: [{ required: true, message: '请输入维修结束时间!' }] }
+            { rules: [{ required: true, message: '请输入保洁结束时间!' }] }
             ]"/>
           </a-form-item>
         </a-col>
         <a-col :span="24">
-          <a-form-item label='维修内容' v-bind="formItemLayout">
+          <a-form-item label='保洁内容' v-bind="formItemLayout">
             <a-textarea :rows="6" v-decorator="[
             'content',
-             { spaces: [{ required: true, message: '请输入维修内容!' }] }
+             { spaces: [{ required: true, message: '请输入保洁内容!' }] }
             ]"/>
           </a-form-item>
         </a-col>

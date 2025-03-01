@@ -75,7 +75,7 @@
         <a-col :span="6"><b>车辆状态：</b>
           <span v-if="vehicleInfo.status == 0" style="color: red">空闲</span>
           <span v-if="vehicleInfo.status == 1" style="color: green">使用中</span>
-          <span v-if="vehicleInfo.status == 2" style="color: green">维修中</span>
+          <span v-if="vehicleInfo.status == 2" style="color: green">保洁中</span>
           <span v-if="vehicleInfo.status == 3" style="color: green">已报废</span>
         </a-col>
         <a-col :span="6"><b>负责人：</b>
@@ -83,7 +83,7 @@
         </a-col>
       </a-row>
       <br/>
-      <a-row style="padding-left: 24px;padding-right: 24px;">  
+      <a-row style="padding-left: 24px;padding-right: 24px;">
         <a-col :span="6"><b>联系电话：</b>
           {{ vehicleInfo.phone }}
         </a-col>

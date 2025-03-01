@@ -7,7 +7,7 @@
           <div :class="advanced ? null: 'fold'">
             <a-col :md="6" :sm="24">
               <a-form-item
-                label="房间型号"
+                label="房间地址"
                 :labelCol="{span: 5}"
                 :wrapperCol="{span: 18, offset: 1}">
                 <a-input v-model="queryParams.model"/>
@@ -160,17 +160,7 @@ export default {
           }
         }
       }, {
-        title: '房间名称',
-        dataIndex: 'name',
-        customRender: (text, row, index) => {
-          if (text !== null) {
-            return text
-          } else {
-            return '- -'
-          }
-        }
-      }, {
-        title: '型号',
+        title: '地址',
         dataIndex: 'model',
         customRender: (text, row, index) => {
           if (text !== null) {
@@ -190,7 +180,7 @@ export default {
           }
         }
       }, {
-        title: '品牌',
+        title: '区域',
         dataIndex: 'brand',
         customRender: (text, row, index) => {
           if (text !== null) {

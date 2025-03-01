@@ -29,18 +29,18 @@
           </a-form-item>
         </a-col>
         <a-col :span="12">
-          <a-form-item label='型号' v-bind="formItemLayout">
+          <a-form-item label='地址' v-bind="formItemLayout">
             <a-input v-decorator="[
             'model',
-            { spaces: [{ required: true, message: '请输入型号!' }] }
+            { spaces: [{ required: true, message: '请输入地址!' }] }
             ]"/>
           </a-form-item>
         </a-col>
         <a-col :span="12">
-          <a-form-item label='品牌' v-bind="formItemLayout">
+          <a-form-item label='区域' v-bind="formItemLayout">
             <a-input v-decorator="[
             'brand',
-            { spaces: [{ required: true, message: '请输入品牌!' }] }
+            { spaces: [{ required: true, message: '请输入区域!' }] }
             ]"/>
           </a-form-item>
         </a-col>

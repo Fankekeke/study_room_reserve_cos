@@ -121,9 +121,9 @@ export default {
           let data = r.data.data
           if (data) {
             this.$notification.open({
-              message: '临期归还通知',
+              message: '临期退房通知',
               description:
-                '您好，您当前有部分订单即将临期！请尽快归还.',
+                '您好，您当前有部分订单即将临期！请尽快退房.',
               onClick: () => {
                 console.log('Notification Clicked!')
               }

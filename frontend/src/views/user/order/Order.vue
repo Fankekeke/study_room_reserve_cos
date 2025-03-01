@@ -60,7 +60,7 @@
                :scroll="{ x: 900 }"
                @change="handleTableChange">
         <template slot="operation" slot-scope="text, record">
-          <a-icon type="setting" theme="twoTone" twoToneColor="#4a9ff5" @click="returnDevice(record)" title="房间归还" v-if="record.status == 1"></a-icon>
+          <a-icon type="setting" theme="twoTone" twoToneColor="#4a9ff5" @click="returnDevice(record)" title="房间退房" v-if="record.status == 1"></a-icon>
           <a-icon type="control" theme="twoTone" @click="download(record)" title="下 载" style="margin-left: 15px" v-if="record.status > 0"></a-icon>
           <a-icon type="file-search" @click="orderViewOpen(record)" title="详 情" style="margin-left: 15px"></a-icon>
           <a-icon v-if="record.status == 0" type="alipay" @click="pay(record)" title="支 付" style="margin-left: 15px"></a-icon>
@@ -178,7 +178,7 @@ export default {
           </a-popover>
         }
       }, {
-        title: '品牌',
+        title: '区域',
         dataIndex: 'brand',
         customRender: (text, row, index) => {
           if (text !== null) {
@@ -249,7 +249,7 @@ export default {
             case '1':
               return <a-tag color="green">已支付</a-tag>
             case '2':
-              return <a-tag color="green">归还中</a-tag>
+              return <a-tag color="green">退房中</a-tag>
             case '3':
               return <a-tag color="green">已完成</a-tag>
             default:
@@ -299,7 +299,7 @@ export default {
     returnDevice (row) {
       let that = this
       this.$confirm({
-        title: '是否归还当前房间?',
+        title: '是否退房当前房间?',
         content: '当您点击确定按钮后，此记录将会提交',
         centered: true,
         onOk () {

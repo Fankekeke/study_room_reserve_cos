@@ -110,7 +110,7 @@ export default {
         dataIndex: 'name',
         scopedSlots: {customRender: 'nameShow'}
       }, {
-        title: '型号',
+        title: '地址',
         dataIndex: 'model',
         scopedSlots: {customRender: 'typeShow'}
       }, {
@@ -123,11 +123,11 @@ export default {
         width: 200,
         scopedSlots: {customRender: 'typeIdShow'}
       }, {
-        title: '品牌',
+        title: '区域',
         dataIndex: 'brand',
         scopedSlots: {customRender: 'unitShow'}
       }, {
-        title: '单价',
+        title: '装修价格',
         dataIndex: 'unitPrice',
         scopedSlots: {customRender: 'priceShow'}
       }]

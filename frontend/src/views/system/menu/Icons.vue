@@ -47,7 +47,7 @@
           </li>
         </ul>
       </a-tab-pane>
-      <a-tab-pane tab="品牌和标识" key="6">
+      <a-tab-pane tab="区域和标识" key="6">
         <ul>
           <li v-for="icon in icons.logoIcons" :key="icon">
             <a-icon :type="icon" :title="icon" @click="chooseIcon(icon)" :class="{'active':activeIndex === icon}"/>

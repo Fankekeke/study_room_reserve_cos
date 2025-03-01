@@ -13,7 +13,7 @@
         <a-steps :current="current" progress-dot size="small">
           <a-step title="未支付" />
           <a-step title="已支付" />
-          <a-step title="归还中" />
+          <a-step title="退房中" />
           <a-step title="已完成" />
         </a-steps>
       </div>
@@ -35,10 +35,10 @@
         <a-col :span="8"><b>房间名称：</b>
           {{ deviceInfo.name ? deviceInfo.name : '- -' }}
         </a-col>
-        <a-col :span="8"><b>型号：</b>
+        <a-col :span="8"><b>地址：</b>
           {{ deviceInfo.model ? deviceInfo.model : '- -' }}
         </a-col>
-        <a-col :span="8"><b>品牌：</b>
+        <a-col :span="8"><b>区域：</b>
           {{ deviceInfo.brand ? deviceInfo.brand : '- -' }}
         </a-col>
       </a-row>
@@ -52,7 +52,7 @@
         <a-col :span="8"><b>开始借用时间：</b>
           {{ orderData.startDate ? orderData.startDate : '- -' }}
         </a-col>
-        <a-col :span="8"><b>归还时间：</b>
+        <a-col :span="8"><b>退房时间：</b>
           {{ orderData.endDate ? orderData.endDate : '- -' }}
         </a-col>
       </a-row>
@@ -73,7 +73,7 @@
         <a-col :span="8"><b>总价格：</b>
           {{ orderData.totalPrice ? (orderData.totalPrice + '元') : '- -' }}
         </a-col>
-        <a-col :span="8"><b>归还时间：</b>
+        <a-col :span="8"><b>退房时间：</b>
           {{ orderData.returnDate ?orderData.returnDate : '- -' }}
         </a-col>
         <a-col :span="8"><b>下单时间：</b>

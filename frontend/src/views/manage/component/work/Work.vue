@@ -1,20 +1,20 @@
 <template>
   <a-card :bordered="false" class="card-area">
-    <div style="width: 100%">
-      <a-col :span="22" v-if="newsList.length > 0">
-        <a-alert
-          banner
-          :message="newsContent"
-          type="info"
-        />
-      </a-col>
-      <a-col :span="2">
-        <a-button type="primary" style="margin-top: 2px;margin-left: 10px" @click="newsNext">下一页</a-button>
-      </a-col>
-    </div>
+<!--    <div style="width: 100%">-->
+<!--      <a-col :span="22" v-if="newsList.length > 0">-->
+<!--        <a-alert-->
+<!--          banner-->
+<!--          :message="newsContent"-->
+<!--          type="info"-->
+<!--        />-->
+<!--      </a-col>-->
+<!--      <a-col :span="2">-->
+<!--        <a-button type="primary" style="margin-top: 2px;margin-left: 10px" @click="newsNext">下一页</a-button>-->
+<!--      </a-col>-->
+<!--    </div>-->
     <br/>
     <br/>
-    <a-row style="margin-top: 15px">
+    <a-row>
       <a-col :span="24">
         <a-card hoverable :loading="loading" :bordered="false" title="公告信息" style="margin-top: 15px">
           <div style="padding: 0 22px">
@@ -59,13 +59,13 @@
       </a-col>
     </a-row>
     <div style="background:#ECECEC; padding:30px;margin-top: 30px;margin-bottom: 30px">
-      <a-radio-group button-style="solid" v-model="checkFlag" style="width: 100%">
+      <a-radio-group button-style="solid" v-model="checkFlag" style="width: 100%;margin-bottom: 15px">
         <a-radio-button :value="item.id" style="text-align: center" v-for="(item, index) in consumableType" :key="index">
-          item.name
+          {{ item.name }}
         </a-radio-button>
       </a-radio-group>
       <a-row :gutter="30">
-        <a-col :span="4" v-for="(item, index) in statusList" :key="index">
+        <a-col :span="4" v-for="(item, index) in currentDataList" :key="index">
           <div style="background: #f8f8f8">
             <a-carousel autoplay style="height: 150px;" v-if="item.typeImages !== undefined && item.typeImages !== ''">
               <div style="width: 100%;height: 150px" v-for="(item, index) in item.typeImages.split(',')" :key="index">
@@ -95,6 +95,9 @@
               </div>
             </div>
           </div>
+        </a-col>
+        <a-col :span="24" v-if="currentDataList.length === 0">
+          <div style="text-align: center;margin-top: 50px">暂无数据</div>
         </a-col>
       </a-row>
       <a-modal

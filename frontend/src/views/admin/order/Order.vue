@@ -165,7 +165,7 @@ export default {
           </a-popover>
         }
       }, {
-        title: '品牌',
+        title: '区域',
         dataIndex: 'brand',
         customRender: (text, row, index) => {
           if (text !== null) {
@@ -236,7 +236,7 @@ export default {
             case '1':
               return <a-tag color="green">已支付</a-tag>
             case '2':
-              return <a-tag color="green">归还中</a-tag>
+              return <a-tag color="green">退房中</a-tag>
             case '3':
               return <a-tag color="green">已完成</a-tag>
             default:

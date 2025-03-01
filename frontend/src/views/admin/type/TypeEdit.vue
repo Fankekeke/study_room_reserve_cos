@@ -135,6 +135,15 @@ export default {
       })
       this.form.setFieldsValue(obj)
     },
+    imagesInit (images) {
+      if (images !== null && images !== '') {
+        let imageList = []
+        images.split(',').forEach((image, index) => {
+          imageList.push({uid: index, name: image, status: 'done', url: 'http://127.0.0.1:9527/imagesWeb/' + image})
+        })
+        this.fileList = imageList
+      }
+    },
     reset () {
       this.loading = false
       this.form.resetFields()

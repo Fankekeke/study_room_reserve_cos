@@ -30,7 +30,7 @@
       <br/>
       <br/>
       <a-row style="padding-left: 24px;padding-right: 24px;" :gutter="15">
-        <a-col style="margin-bottom: 15px"><span style="font-size: 15px;font-weight: 650;color: #000c17">物品详情</span></a-col>
+        <a-col style="margin-bottom: 15px"><span style="font-size: 15px;font-weight: 650;color: #000c17">装修详情</span></a-col>
         <a-col :span="24">
           <a-table :columns="columns" :data-source="goodsList">
           </a-table>
@@ -67,7 +67,7 @@ export default {
         title: '房间名称',
         dataIndex: 'name'
       }, {
-        title: '型号',
+        title: '地址',
         dataIndex: 'model'
       }, {
         title: '数量',
@@ -76,7 +76,7 @@ export default {
         title: '所属类型',
         dataIndex: 'type'
       }, {
-        title: '品牌',
+        title: '区域',
         dataIndex: 'brand'
       }, {
         title: '单价',
