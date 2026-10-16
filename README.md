@@ -1,39 +1,17 @@
-### 基于SpringBoot + Vue的自习室预约系统.
+![](https://img.shields.io/badge/License-MIT-blue.svg)
 
-###### 管理员：
-公告信息 、信用积分记录 、房间管理 、房间类型 、装修公司 、消息通知 、支付记录 、房间装修 、租借订单 、房间保洁 、员工管理 、用户管理 、数据统计。
+![](https://img.shields.io/badge/Version-1.0.0-brightgreen.svg)
 
-###### 用户：
-账户注册登录、密码修改、个人信息 、我的消息 、我的订单 、支付记录 、信用积分 、在线支付 、订单评价 、订单评价。
+![](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
 
-##### 空间与资源配置
-###### 房间/类型管理： 灵活定义自习室规格与功能分区，实时维护各房间的开放状态与配置。
+# 基于 SpringBoot + Vue  的自习室预约系统
 
-###### 房间装修/公司： 记录空间维护与装修进度，对接专业公司确保学习环境的持续优化。
+房间预约 · 信用积分 · 在线支付 · 房间保洁 · 装修管理 · 消息通知 · 订单评价 · 数据统计
 
-###### 房间保洁： 建立标准化清洁流程，实时追踪保洁状态，为用户提供卫生整洁的自习空间。
-
-##### 预约租赁与交易体系
-###### 租借订单/我的： 提供便捷的选座预约与订单追踪，实现从下单到使用的全流程闭环管理。
-
-###### 在线支付/记录： 整合安全便捷的支付入口，自动生成财务流水，方便用户与管理员核对账目。
-
-###### 订单评价： 收集用户对环境及服务的真实反馈，作为提升运营质量与管理水平的重要依据。
-
-##### 用户信用与激励机制
-###### 信用积分/记录： 建立用户行为信用档案，通过积分奖惩机制规范自习行为，减少违约占用。
-
-###### 用户/员工管理： 统一管控会员信息与工作人员权限，支撑平台日常运营与高效的服务保障。
-
-##### 信息交互与智能提醒
-###### 公告信息/通知： 实时发布自习室规定与活动资讯，确保重要通知能够精准触达每一位用户。
-
-###### 我的消息/通知： 聚合预约成功、费用变动等系统提醒，通过多端通知保障信息传递的实时性。
-
-##### 运营分析与辅助决策
-###### 数据统计： 自动汇总房间周转率、营收趋势及信用分布，通过数据驱动自习室的科学经营。
+本项目是一套面向共享自习室场景的数字化预约管理平台，采用前后端分离架构，覆盖**管理员**与**用户**两类角色。系统围绕"房间预约、信用积分、在线支付、订单管理、房间保洁、装修管理、消息通知、数据统计"等核心业务设计，支持从用户浏览自习室、可视化选座、在线预约支付，到管理员全平台监管、房间运维、员工管理、数据统计的全链路数字化运营，同时融入信用积分机制与装修保洁管理特色功能，构建"预约+支付+运维+信用"一体化的自习室综合管理平台。
 
 #### 安装环境
+️**注意**：请确保您的开发环境已安装以下依赖。
 
 JAVA 环境 
 
@@ -41,24 +19,128 @@ Node.js环境 [https://nodejs.org/en/] 选择14.17
 
 Yarn 打开cmd， 输入npm install -g yarn !!!必须安装完毕nodejs
 
-Mysql 数据库 [https://blog.csdn.net/qq_40303031/article/details/88935262] 一定要把账户和密码记住
+Mysql 数据库 一定要把账户和密码记住
 
 redis
 
-Idea 编译器 [https://blog.csdn.net/weixin_44505194/article/details/104452880]
+Idea 编译器
 
-WebStorm OR VScode 编译器 [https://www.jianshu.com/p/d63b5bae9dff]
+WebStorm OR VScode 编译器
 
 #### 采用技术及功能
 
 后端：SpringBoot、MybatisPlus、MySQL、Redis、
 前端：Vue、Apex、Antd、Axios
 
-平台前端：vue(框架) + vuex(全局缓存) + rue-router(路由) + axios(请求插件) + apex(图表)  + antd-ui(ui组件)
+平台前端：vue(框架) + vuex(全局缓存) + rue-router(路由) + axios(请求插件) + apex(图表)  + antd-ui(ui组件) + 百度地图 API
 
 平台后台：springboot(框架) + redis(缓存中间件) + shiro(权限中间件) + mybatisplus(orm) + restful风格接口 + mysql(数据库)
 
 开发环境：windows10 or windows7 ， vscode or webstorm ， idea + lambok
+
+---
+
+## 核心特性
+
+- **房间预约**：支持按房间类型（静音区/双人区/VIP区/背书区等）筛选自习室，提供座位选座，实时展示座位状态（空闲/已预约/使用中/维修中），支持按小时/半天/全天预约，预约冲突自动校验。
+- **信用积分机制**：用户初始信用分100分，预约后未按时签到自动扣分（如-10分），信用分低于阈值（如60分）时限制预约功能；良好履约行为可恢复积分，有效减少恶意占座与爽约行为。
+- **在线支付与订单闭环**：集成微信支付/支付宝支付，支持按小时计费、套餐卡（小时卡/日卡/月卡）购买；订单状态机涵盖待支付、已支付、待签到、使用中、已完成、已取消、已退款等状态。
+- **房间保洁与装修管理**：管理员可管理房间装修记录（装修公司、装修时间、装修内容、装修图片），安排房间保洁任务（保洁人员、保洁时间、保洁状态），确保自习室环境品质。
+- **消息通知与公告**：支持系统消息推送（预约成功提醒、签到提醒、订单到期提醒、信用分变动通知），管理员可发布平台公告，用户端实时接收消息。
+- **数据统计与运营看板**：管理员端提供多维度数据看板，包括今日预约量、房间使用率、营收趋势、热门时段热力图、用户违约率统计等，支持报表导出。
+---
+
+## 适用场景
+
+- 共享自习室/付费自习室运营管理
+- 高校图书馆自习室预约管理
+- 考研/公考培训机构自习空间管理
+- 24小时无人值守自习室数字化运营
+- 多门店连锁自习室统一管理
+---
+
+## 功能模块概览
+
+## 管理员端
+
+管理员为平台核心运营角色，负责全平台监管与资源运维：
+
+### 账号与基础
+
+- **管理员管理**：管理管理员账号，包括账号增删改查、角色分配、权限配置、登录日志查看，支持修改密码与安全设置。
+- **用户管理**：管理注册用户信息，包括昵称、头像、手机号、信用积分、账户状态，支持账号冻结/解冻、信用分手动调整、违规用户处理。
+- **员工管理**：管理自习室员工信息，包括姓名、工号、岗位（保洁/前台/运维等）、联系方式、所属门店、入职时间、账户状态，支持员工账号开通与权限分配。
+
+### 房间与资源
+
+- **房间管理**：管理自习室房间信息，包括房间名称、所在楼层、房间类型、容纳人数、开放时间、设施配置（插座/空调/WiFi/台灯等）、房间图片、当前状态（开放/维护中/已关闭），支持房间增删改查。
+- **房间类型**：管理房间类型字典，包括类型名称（静音区/双人区/VIP区/背书区/沉浸区/24小时区等）、类型描述、基础价格系数、图标，支持类型增删改查。
+- **房间装修**：管理房间装修记录，包括关联房间、装修公司、装修开始时间、装修结束时间、装修内容、装修费用、装修前后对比图片，支持装修记录查询与归档。
+- **装修公司**：管理合作装修公司信息，包括公司名称、联系人、电话、地址、合作案例、信誉评分、合作状态，支持装修公司增删改查与评估。
+- **房间保洁**：管理房间保洁任务，包括关联房间、保洁人员、保洁日期、保洁时间、保洁内容、保洁状态（待保洁/已完成/已验收）、验收评分，支持保洁任务派发与记录查询。
+
+### 订单与支付
+
+- **租借订单**：查看平台全部预约订单，包括订单号、用户信息、房间/座位、预约时段、订单金额、订单状态、支付状态，支持订单筛选、退款处理、纠纷仲裁、异常订单手动取消。
+- **支付记录**：查看平台全部支付记录，包括支付金额、支付方式、支付时间、关联订单、交易流水号，支持按时间/支付方式/金额筛选，支持财务报表导出。
+- **订单评价**：查看全平台订单评价，包括评分、评价内容、关联订单与房间，支持评价审核（隐藏违规评价）、差评标记与处理。
+
+### 内容与通知
+
+- **公告信息**：发布与管理平台公告，包括公告标题、内容、类型（通知/活动/规则变更）、发布时间、置顶状态，支持公告编辑与删除。
+- **消息通知**：管理系统消息推送，包括消息标题、内容、接收对象（全体用户/指定用户）、发送状态，支持批量发送预约提醒、签到提醒、到期提醒等系统通知。
+- **信用积分记录**：查看全平台用户信用积分变动记录，包括变动用户、变动分值、变动原因（违约扣分/履约加分/手动调整）、变动时间，支持积分记录查询与统计。
+
+### 数据与统计
+
+- **数据统计**：综合数据看板，展示核心运营指标（今日预约量/今日营收/房间使用率/活跃用户数/违约率），支持预约趋势分析、热门房间排行、时段热力图、营收月度对比、用户信用分布等多维度图表展示，支持报表导出。
+
+## 用户端
+
+用户为平台的服务使用方，可在线浏览自习室、预约座位：
+
+### 账号与个人
+
+- **账户注册登录**：支持手机号+验证码注册登录、账号密码登录，支持找回密码，首次登录自动创建用户档案。
+- **密码修改**：支持用户自主修改登录密码，保障账户安全。
+- **个人信息**：查看与编辑个人基本信息，包括昵称、头像、手机号、信用积分、预约历史，支持查看个人信用分变动明细。
+
+### 预约与订单
+
+- **我的订单**：查看本人全部预约订单，包括订单号、房间/座位、预约时段、订单金额、订单状态（待支付/已支付/待签到/使用中/已完成/已取消），支持订单筛选、取消待支付订单、申请退款、确认完成。
+- **在线支付**：对待支付订单进行在线支付，支持微信支付、支付宝支付等多种方式，支付成功后自动更新订单状态并推送预约成功通知。
+- **支付记录**：查看个人全部支付记录，包括支付金额、支付方式、支付时间、关联订单，支持缴费记录查询。
+- **订单评价**：对已完成订单进行评价，包括房间评分、服务评分、评价内容，支持查看历史评价记录。
+
+### 互动与通知
+
+- **我的消息**：查看个人收到的所有系统消息，包括预约成功提醒、签到提醒、订单到期提醒、信用分变动通知、公告推送等，支持已读/未读管理。
+- **信用积分**：查看个人当前信用分、信用分等级、可预约状态，查看信用分变动明细（扣分/加分记录与原因），了解信用分规则。
+
+---
+
+## 项目结构
+
+```text
+pharmacy-dispensing-system/
+├── backend/            # 后端 API 服务
+│   ├── src/
+│   │   ├── controllers/  # 控制器
+│   │   ├── models/       # 数据模型
+│   │   ├── routes/       # 路由
+│   │   └── services/     # 业务逻辑
+│   └── package.json
+├── frontend/           # 前端 Web 应用
+│   ├── src/
+│   │   ├── views/      # 页面视图
+│   │   ├── components/ # 公共组件
+│   │   └── store/      # 状态管理
+│   └── package.json
+├── docs/               # 项目文档与 API 接口说明
+├── LICENSE
+└── README.md
+```
+---
 
 
 #### 前台启动方式
@@ -68,25 +150,25 @@ WebStorm OR VScode 编译器 [https://www.jianshu.com/p/d63b5bae9dff]
 #### 默认后台账户密码
 [管理员]
 admin
-1234qwer
+123456
+
+[用户]
+fank
+123456
 
 #### 项目截图
-暂无
-
 |  |  |
 |---------------------|---------------------|
-| ![](https://fank-bucket-oss.oss-cn-beijing.aliyuncs.com/img/6d848aa3-3c8b-4151-b816-f11d1bfdd7ea.png) | ![](https://fank-bucket-oss.oss-cn-beijing.aliyuncs.com/img/dc2110bb-fa2d-4203-bf71-3bc45e7f9f67.png) |
-| ![](https://fank-bucket-oss.oss-cn-beijing.aliyuncs.com/img/4d2495f1-a4d4-4ce8-94d3-c1d92f20e80a.png) | ![](https://fank-bucket-oss.oss-cn-beijing.aliyuncs.com/img/b1985af4-00de-4241-853f-4acbb2e691e7.png) |
-| ![](https://fank-bucket-oss.oss-cn-beijing.aliyuncs.com/img/3fef8828-550f-4a85-ba8a-cbaafcbe98c1.png) | ![](https://fank-bucket-oss.oss-cn-beijing.aliyuncs.com/img/b2adcbba-7235-4a37-96fa-71301b2fbbde.png) |
-| ![](https://fank-bucket-oss.oss-cn-beijing.aliyuncs.com/img/0b8e1dde-c965-437e-826c-4f5ba19ce96b.png) | ![](https://fank-bucket-oss.oss-cn-beijing.aliyuncs.com/img/28651cc6-bf47-4792-86b8-de323952dbd0.png) |
-| ![](https://fank-bucket-oss.oss-cn-beijing.aliyuncs.com/img/ec08215d-b924-458a-84a4-5071fb6ab3ae.png) | ![](https://fank-bucket-oss.oss-cn-beijing.aliyuncs.com/img/21609b91-bcf6-40d9-a396-0ed6d53e95f6.png) |
-| ![](https://fank-bucket-oss.oss-cn-beijing.aliyuncs.com/img/eafd5a0a-33f9-4195-a995-fe7f305c7e20.png) | ![](https://fank-bucket-oss.oss-cn-beijing.aliyuncs.com/img/771ca0b7-06e4-4c3c-a312-e627c607ab95.png) |
-| ![](https://fank-bucket-oss.oss-cn-beijing.aliyuncs.com/img/e4973487-7ca1-43bd-889d-1fda83b9e6e2.png) | ![](https://fank-bucket-oss.oss-cn-beijing.aliyuncs.com/img/699c0eaf-07f5-4dc8-a8e1-9bc77aac0d59.png) |
-| ![](https://fank-bucket-oss.oss-cn-beijing.aliyuncs.com/img/e18e83d0-aa3a-47bb-afc7-3f8a522fa97c.png) | ![](https://fank-bucket-oss.oss-cn-beijing.aliyuncs.com/img/24f2e7f1-4bb5-4c0d-9e97-435dd708af88.png) |
-| ![](https://fank-bucket-oss.oss-cn-beijing.aliyuncs.com/img/e6db588b-9332-46ee-a158-e8f39e2e6a1e.png) | ![](https://fank-bucket-oss.oss-cn-beijing.aliyuncs.com/img/22aa4e8a-9a4f-4ca1-a652-e659ab58ad7a.png) |
-| ![](https://fank-bucket-oss.oss-cn-beijing.aliyuncs.com/img/e3e4b7ba-a764-41d0-8644-8e6a9ea26dff.png) | ![](https://fank-bucket-oss.oss-cn-beijing.aliyuncs.com/img/18e7e41f-461e-44f0-bcc1-6ec18f614d2e.png) |
-
-![](https://fank-bucket-oss.oss-cn-beijing.aliyuncs.com/work/936e9baf53eb9a217af4f89c616dc19.png)
+| ![](./assets/image%20(1).png) | ![](./assets/image%20(2).png) |
+| ![](./assets/image%20(3).png) | ![](./assets/image%20(4).png) |
+| ![](./assets/image%20(5).png) | ![](./assets/image%20(6).png) |
+| ![](./assets/image%20(7).png) | ![](./assets/image%20(8).png) |
+| ![](./assets/image%20(9).png) | ![](./assets/image%20(10).png) |
+| ![](./assets/image%20(11).png) | ![](./assets/image%20(12).png) |
+| ![](./assets/image%20(13).png) | ![](./assets/image%20(14).png) |
+| ![](./assets/image%20(15).png) | ![](./assets/image%20(16).png) |
+| ![](./assets/image%20(17).png) | ![](./assets/image%20(18).png) |
+| ![](./assets/image%20(19).png) | ![](./assets/image%20(20).png) |
 
 #### 演示视频
 
@@ -104,7 +186,10 @@ WeChat: `Storm_Berserker`
 
 > 项目部署调试不好包退！功能逻辑没讲明白包退！
 
+<div align=center><img align="center" src="./assets/product_word.png" alt="fankekeke" /></div>
+
 #### 其它资源
+[2026年-答辩顺利通过-客户评价🀄](https://berserker287.github.io/2026/06/29/2026%E5%B9%B4%E7%AD%94%E8%BE%A9%E9%A1%BA%E5%88%A9%E9%80%9A%E8%BF%87/)
 
 [2025年-答辩顺利通过-客户评价🍜](https://berserker287.github.io/2025/06/18/2025%E5%B9%B4%E7%AD%94%E8%BE%A9%E9%A1%BA%E5%88%A9%E9%80%9A%E8%BF%87/)
 
@@ -128,4 +213,8 @@ WeChat: `Storm_Berserker`
 
 More info: [悲伤的橘子树](https://berserker287.github.io/)
 
-<p><img align="center" src="https://fank-bucket-oss.oss-cn-beijing.aliyuncs.com/img/%E5%90%88%E4%BD%9C%E7%89%A9%E6%96%99%E6%A0%B7%E5%BC%8F%20(3).png" alt="fankekeke" /></p>
+<div align="center"><img align="center" src="./assets/chat_qr_code.png" alt="fankekeke" width=250 /></div>
+
+<p><img align="center" src="./assets/wechat_group.png" alt="fankekeke" /></p>
+
+**感谢查看**
